@@ -20,7 +20,9 @@ const PORT = process.env.PORT || 5001;
 //middleware 
 app.use(cors({
     origin: "http://localhost:5173", // use http, not https unless you have SSL locally
-}));
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true
+})); 
 
 app.use(express.json());  // this middleware will parse JSON bodies: req.body
 app.use(rateLimiter);
