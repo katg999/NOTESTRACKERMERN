@@ -3,8 +3,8 @@ import ratelimit from "../../config/upstash.js";
 const rateLimiter = async (req, res, next) => {
    
     try {
-
-        const {success} = await ratelimit.limit("my-limit-key");
+        
+        const {success} = await ratelimit.limit(userid);
     
 
         if(!success) {
@@ -14,8 +14,6 @@ const rateLimiter = async (req, res, next) => {
         }
           next(); // Call the next middleware or route handler
         
-
-
 
     }  catch(error) {
         console.error("Error in rate limiter middleware", error);
